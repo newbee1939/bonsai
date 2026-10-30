@@ -32,8 +32,12 @@
 - [ ] ワットチェッカーでアイドル消費電力を測る（電気代の基準値）
   - 後回し: 機器を持っていないため。Phase 4 で電力測定つきスマートプラグを入れたら測る
 - [ ] Mac の `dd` で USB に Proxmox VE 9.2 の ISO を書き込む
-  - ISO: OS のインストーラ一式を CD/DVD の複製として 1 ファイルにしたもの
-  - dd: ISO のバイト列を加工せず USB に書き込むコマンド（Ventoy は Mac 非対応のため不使用）
+  - 目的: 普通の USB を、Proxmox のインストーラとして起動できる USB に変える
+  - ISO: OS のインストーラ一式を 1 ファイルにしたもの / `/dev/disk4`: USB 本体を表すファイル / mount: Mac が USB の中身をファイルとして使っている状態
+  1. `diskutil unmountDisk /dev/disk4` — Mac に USB を使うのをやめさせる（Mac は「a.txt は 1000 番目」などと記憶している。`dd` が中身を書き換えても記憶は古いままで、食い違ったまま読み書きすると壊れる。unmount = この記憶を捨てさせる）
+  2. `sudo dd if=$HOME/Downloads/proxmox-ve_9.2-1.iso of=/dev/rdisk4 bs=1m` — **本体**。ISO を USB に丸ごと上書き（`if` が元、`of` が USB。実行前に `disk4` が USB か必ず確認）
+  3. `diskutil eject /dev/disk4` — 仕上げ。書き込み待ちが残っていれば USB に反映し、Mac から切り離す。これで抜いてよい
+  - `dd` = 書き込む / `eject` = 安全に抜けるようにする。別物（`eject` は書き込みコマンドではない）
 - [ ] BIOS で AMD-V（SVM）と IOMMU を有効化
   - AMD-V: CPU の仮想化支援機能。無効だと VM が動かない
   - IOMMU: VM に USB 機器などを直接渡すための機能（Zigbee ドングルで使う）
