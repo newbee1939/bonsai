@@ -30,6 +30,7 @@
 ## Phase 0 — ミニ PC を Proxmox にする
 
 - [ ] ワットチェッカーでアイドル消費電力を測る（電気代の基準値）
+  - 後回し: 機器を持っていないため。Phase 4 で電力測定つきスマートプラグを入れたら測る
 - [ ] Ventoy で USB に Proxmox VE 9.2 の ISO を入れる
   - Ventoy: USB に ISO（OS のインストールイメージ）をコピーするだけで起動できるツール
 - [ ] BIOS で AMD-V（SVM）と IOMMU を有効化
