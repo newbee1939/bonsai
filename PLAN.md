@@ -31,7 +31,7 @@
 
 - [ ] ワットチェッカーでアイドル消費電力を測る（電気代の基準値）
   - 後回し: 機器を持っていないため。Phase 4 で電力測定つきスマートプラグを入れたら測る
-- [ ] Mac の `dd` で USB に Proxmox VE 9.2 の ISO を書き込む
+- [x] Mac の `dd` で USB に Proxmox VE 9.2 の ISO を書き込む
   - 目的: 普通の USB を、Proxmox のインストーラとして起動できる USB に変える
   - ISO: OS のインストーラ一式を 1 ファイルにしたもの / `/dev/disk4`: USB 本体を表すファイル / mount: Mac が USB の中身をファイルとして使っている状態
   1. `diskutil unmountDisk /dev/disk4` — Mac に USB を使うのをやめさせる（Mac は「a.txt は 1000 番目」などと記憶している。`dd` が中身を書き換えても記憶は古いままで、食い違ったまま読み書きすると壊れる。unmount = この記憶を捨てさせる）
