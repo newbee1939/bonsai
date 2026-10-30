@@ -31,8 +31,9 @@
 
 - [ ] ワットチェッカーでアイドル消費電力を測る（電気代の基準値）
   - 後回し: 機器を持っていないため。Phase 4 で電力測定つきスマートプラグを入れたら測る
-- [ ] Ventoy で USB に Proxmox VE 9.2 の ISO を入れる
-  - Ventoy: USB に ISO（OS のインストールイメージ）をコピーするだけで起動できるツール
+- [ ] Mac の `dd` で USB に Proxmox VE 9.2 の ISO を書き込む
+  - ISO: OS のインストーラ一式を CD/DVD の複製として 1 ファイルにしたもの
+  - dd: ISO のバイト列を加工せず USB に書き込むコマンド（Ventoy は Mac 非対応のため不使用）
 - [ ] BIOS で AMD-V（SVM）と IOMMU を有効化
   - AMD-V: CPU の仮想化支援機能。無効だと VM が動かない
   - IOMMU: VM に USB 機器などを直接渡すための機能（Zigbee ドングルで使う）
